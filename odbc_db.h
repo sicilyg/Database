@@ -50,5 +50,7 @@ class odbc_db
       // Assumes that the tables are already created
       // Assumes that connection to database is already made
       void initDatabase();
+	
+      void init();
 };
 #endif

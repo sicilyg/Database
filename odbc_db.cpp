@@ -203,3 +203,15 @@ void odbc_db::initDatabase()
       cout << ", SQLState: " << e.getSQLState() << ")" << endl;
    }
 }
+
+void odbc_db::init() {
+	try {
+		statement = connection->createStatement();
+	} catch (sql::SQLException &e) {
+		cout << "ERROR: SQLException in " << __FILE__;
+      		cout << " (" << __func__<< ") on line " << __LINE__ << endl;
+      		cout << "ERROR: " << e.what();
+      		cout << " (MySQL error code: " << e.getErrorCode();
+      		cout << ", SQLState: " << e.getSQLState() << ")" << endl;
+	}
+}

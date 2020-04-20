@@ -15,7 +15,7 @@ string SchemaName = "xsguo";          // Change to your username
 
    odbc_db myDB;
    myDB.Connect(Username, mysqlPassword, SchemaName);
-   //myDB.initDatabase();
+   myDB.init();
  
    // For debugging purposes:  Show the database before insert
    string builder = "";
