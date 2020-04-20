@@ -26,7 +26,7 @@ string SchemaName = "xsguo";          // Change to your username
    string dept_code = "DEPT CODE";
    string course_number = "COURSE NUMBWE";
    string title = "TITLE";
-   string credit_number = "CREDIT NUMBER";
+   string credit = "CREDIT NUMBER";
 
    // Read command line arguments
    // First arg, arg[0] is the name of the program
@@ -34,10 +34,10 @@ string SchemaName = "xsguo";          // Change to your username
    dept_code = argv[1];
    course_number = argv[2];
    title = argv[3];
-   credit_number = argv[4];
+   credit = argv[4];
 
    // Insert the new course
-   string input = dept_code + ",'" + course_number + "','" + title + "','" + credit_number + "'";
+   string input = dept_code + ",'" + course_number + "','" + title + "','" + credit + "'";
    myDB.insert("Court", input);    // insert new course
 
    //For debugging purposes: Show the database after insert
