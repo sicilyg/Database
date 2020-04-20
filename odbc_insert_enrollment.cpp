@@ -1,5 +1,5 @@
 /* Compile using:
-g++ -Wall -I/usr/include/cppconn -o odbc odbc_insert_course.cpp -L/usr/lib -lmysqlcppconn
+g++ -Wall -I/usr/include/cppconn -o odbc odbc_insert_enrollment.cpp -L/usr/lib -lmysqlcppconn
 run:
 ./odbc */
 #include "odbc_db.h"
@@ -19,31 +19,27 @@ string SchemaName = "xsguo";          // Change to your username
 
    // For debugging purposes:  Show the database before insert
    string builder = "";
-   string query1 = "SELECT * from Course";
-   builder.append("<br><br><br> Course table before:" + myDB.query(query1) +"<br>");
+   string query1 = "SELECT * from Enrollment";
+   builder.append("<br><br><br> Student table before:" + myDB.query(query1) +"<br>");
 
-   // Parse input string to get course department code, crouse number, title, and credit number
-   string course_ID = "COURSE ID";
+   // Parse input string to get restaurant Name and Type and  City
+   string ID = "4";
    string dept_code = "DEPT CODE";
-   string course_number = "COURSE NUMBWE";
-   string title = "TITLE";
-   string credit = "CREDIT NUMBER";
+   string course_number = "COURSE NUMBER";
 
    // Read command line arguments
    // First arg, arg[0] is the name of the program
    // Next args are the parameters
-   course_ID = argv[1];
+   ID = argv[1];
    dept_code = argv[2];
    course_number = argv[3];
-   title = argv[4];
-   credit = argv[5];
 
-   // Insert the new course
-   string input = course_ID + ",'" + dept_code + "','" + course_number + "','" + title + "','" + credit + "'";
-   myDB.insert("Course", input);    // insert new course
+   // Insert the new restaurant
+   string input = ID + ",'" + dept_code + "','" + course_number + "'";
+   myDB.insert("Enrollment", input);    // insert new restaurant
 
    //For debugging purposes: Show the database after insert
-   builder.append("<br><br><br> Table Course after:" + myDB.query(query1));
+   builder.append("<br><br><br> Table Student after:" + myDB.query(query1));
    cout << builder;
 
    myDB.disConnect();//disconect Database
