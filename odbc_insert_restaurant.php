@@ -23,14 +23,19 @@ if (isset($_POST['submit']))
     $name = escapeshellarg($_POST[name]);
     $major = escapeshellarg($_POST[major]);
 
-    $command = '/home/xsguo/public_html/project_cpp/odbc_insert_restaurant.exe ' . $id . ' ' . $name . ' ' . $major;
-    echo '<p>' . 'command: ' . $command . '<p>';
+    $result = mysql_query("SELECT * FROM Student WHERE StudentID = id");
+    $matchFound = mysql_num_rows($result) > 0 ? 'yes' : 'no';
+    
+    if($matchFound == 'no') {
+    	$command = '/home/xsguo/public_html/project_cpp/odbc_insert_restaurant.exe ' . $id . ' ' . $name . ' ' . $major;
+    	echo '<p>' . 'command: ' . $command . '<p>';
 
-    // remove dangerous characters from command to protect web server
-    $command = escapeshellcmd($command);
+    	// remove dangerous characters from command to protect web server
+    	$command = escapeshellcmd($command);
  
-    // run odbc_insert_restaurant.exe
-    system($command);           
+    	// run odbc_insert_restaurant.exe
+ 	system($command);           
+    }
 }
 ?>
 
