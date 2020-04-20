@@ -142,7 +142,7 @@ void odbc_db::initDatabase()
       statement = connection->createStatement();
       statement->executeUpdate("DELETE from Student");
       statement->executeUpdate("DELETE from Course");
-      //statement->executeUpdate("DELETE from Enrollment");
+      statement->executeUpdate("DELETE from Enrollment");
 
       insert("Student", "1001, 'Devin Casey', 'Computer Science'");
       insert("Student", "1002, 'Kylie McGregor', 'Psychology'");
