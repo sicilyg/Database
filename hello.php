@@ -5,6 +5,8 @@
 <form action="hello.php" method="post">
 	<input type = "submit" class = "button" name = "init" value = "initDatabase" /> <br> <br><br>  
 	 <a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_insert_restaurant.php"> Insert Student </a>
+	<br><br>
+	<a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_view_student.php"> View All Students </a>
 </form>
 <br><br>
 
