@@ -142,7 +142,6 @@ void odbc_db::initDatabase()
       statement = connection->createStatement();
       statement->executeUpdate("DELETE from Student");
       statement->executeUpdate("DELETE from Course");
-      statement->executeUpdate("DELETE from Enrollment");
 
       insert("Student", "1001, 'Devin Casey', 'Computer Science'");
       insert("Student", "1002, 'Kylie McGregor', 'Psychology'");
@@ -154,53 +153,10 @@ void odbc_db::initDatabase()
       insert("Course", "2003, 'MATH', 2554, 'Calculus I', 4");
       insert("Course", "2004, 'MATH', 2574, 'Calculus II', 4");
 
-      insert("Enrollment", "3001,1001,2003,'MATH',2554");
-      insert("Enrollment", "3002,1001,2002,'CSCE',2014");
-      insert("Enrollment", "3003,1002,2003,'MATH',2554");
-      insert("Enrollment", "3004,1003,2004,'MATH',2574");
-      insert("Enrollment", "3005,1003,2002,'CSCE',2014");
-      insert("Enrollment", "3006,1004,2001,'CSCE',2004");
-      insert("Enrollment", "3007,1004,2003,'MATH',2554");
-
-      // Add records to the tables
-      /*insert("Restaurant", "0, 'Tasty Thai', 'Asian', 'Dallas'");
-      insert("Restaurant", "3,'Eureka Pizza','Pizza', 'Fayetteville'");
-      insert("Restaurant", "5,'Tasty Thai','Asian', 'Las Vegas'");
-
-      insert("Dish", "13,'Spring Roll','ap'");
-      insert("Dish", "15,'Pad Thai','en'");
-      insert("Dish", "16,'Pad Stickers','ap'");
-      insert("Dish", "22,'Masaman Curry','en'");
-      insert("Dish", "10,'Custard','ds'");
-      insert("Dish", "12,'Garlic Bread','ap'");
-      insert("Dish", "44,'Salad','ap'");
-      insert("Dish", "07,'Cheese Pizza','en'");
-      insert("Dish", "19,'Pepperoni Pizza','en'");
-      insert("Dish", "77,'Vegi Supreme Pizza','en'");
-
-      insert("MenuItem", "0,0,13,8.00");
-      insert("MenuItem", "1,0,16,9.00");
-      insert("MenuItem", "2,0,44,10.00");
-      insert("MenuItem", "3,0,15,19.00");
-      insert("MenuItem", "4, 0,22,19.00");
-      insert("MenuItem", "5, 3,44,6.25");
-      insert("MenuItem", "6, 3,12,5.50");
-      insert("MenuItem", "7, 3,7,12.50");
-      insert("MenuItem", "8, 3,19,13.50");
-      insert("MenuItem", "9,5,13,6.00");
-      insert("MenuItem", "10,5,15,15.00");
-      insert("MenuItem", "11,5,22,14.00");
-
-      insert("FoodOrder", "0,2,STR_To_DATE('01,03,2017', '%d,%m,%Y'), '10:30'");
-      insert("FoodOrder", "1,0,STR_To_DATE('02,03,2017', '%d,%m,%Y'), '15:33'");
-      insert("FoodOrder", "2,3,STR_To_DATE('01,03,2017', '%d,%m,%Y'), '15:35'");
-      insert("FoodOrder", "3,5,STR_To_DATE('03,03,2017', '%d,%m,%Y'), '21:00'");
-      insert("FoodOrder", "4,7,STR_To_DATE('01,03,2017', '%d,%m,%Y'), '18:11'");
-      insert("FoodOrder", "5,7,STR_To_DATE('04,03,2017', '%d,%m,%Y'), '18:51'");
-      insert("FoodOrder", "6,9,STR_To_DATE('01,03,2017', '%d,%m,%Y'), '19:00'");
-      insert("FoodOrder", "7,11,STR_To_DATE('05,03,2017', '%d,%m,%Y'), '17:15'");
-*/
-
+      statement->executeUpdate("INSERT INTO Enrollment(S_ID, C_ID) VALUES(1001, 2001)");
+      statement->executeUpdate("INSERT INTO Enrollment(S_ID, C_ID) VALUES(1001, 2004)");
+      statement->executeUpdate("INSERT INTO Enrollment(S_ID, C_ID) VALUES(1003, 2001)");
+      statement->executeUpdate("INSERT INTO Enrollment(S_ID, C_ID) VALUES(1003, 2003)");
    }
    catch (sql::SQLException &e)
    {

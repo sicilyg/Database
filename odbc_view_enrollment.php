@@ -1,9 +1,9 @@
 <html>
 <body>
-<h3>View All Course From Specific Department</h3>
+<h3>View All Course That A Student is Enrolled IN </h3>
 
-<form action="odbc_view_course.php" method="post">
-	DeptCode: <input type="text" name="DeptCode"> <br>
+<form action="odbc_view_enrollment.php" method="post">
+	StudentID: <input type="text" name="studentID"> <br>
 	<input name="submit" type="submit"> <br><br><br>
 	<a href = "http://www.csce.uark.edu/~xsguo/project_cpp/hello.php"> Main Menu </a>
 </form>
@@ -14,9 +14,9 @@
 
 <?php
 if (isset($_POST['submit'])) {
-	$DeptCode = escapeshellarg($_POST[DeptCode]);
+	$studentID = escapeshellarg($_POST[studentID]);
 
-	$command = '/home/xsguo/public_html/project_cpp/odbc_view_course.exe ' . $DeptCode;
+	$command = '/home/xsguo/public_html/project_cpp/odbc_view_enrollment.exe ' . $studentID;
 	echo '<p>' . 'command: ' . $command . '<p>';
 
 	$command = escapeshellcmd($command);

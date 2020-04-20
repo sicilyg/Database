@@ -1,7 +1,3 @@
-/* Compile using:
-g++ -Wall -I/usr/include/cppconn -o odbc odbc_insert_course.cpp -L/usr/lib -lmysqlcppconn
-run:
-./odbc */
 #include "odbc_db.h"
 #include <iostream>
 #include <string>
