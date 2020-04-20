@@ -3,7 +3,7 @@
 <h3>Main Menu</h3>
 
 <form action="hello.php" method="post">
-	<input type = "submit" class = "button" name = "init" value = "initDatabase" /> <br>   
+	<input type = "submit" class = "button" name = "init" value = "initDatabase" /> <br> <br><br>  
 	 <a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_insert_restaurant.php"> Insert Student </a>
 </form>
 <br><br>
