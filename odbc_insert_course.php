@@ -2,7 +2,7 @@
 <body>
 <h3>Enter information about a course to add to the database:</h3>
 
-<form action="odbc_insert_restaurant.php" method="post">
+<form action="odbc_insert_course.php" method="post">
     Department Code: <input type="text" name="dept_code"><br>
     Course Number: <input type="text" name="course_number"><br>
     Title: <input type="text" name="title"><br>
