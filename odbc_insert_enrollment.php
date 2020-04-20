@@ -10,7 +10,7 @@
     Course Number: <input type="text" name="course_number"><br>
     <input name="submit" type="submit" >
     <br><br>
-    <a href = "http://www.csce.uark.edu/~xsguo/project_cpp/hello.php"> Main Menu </a>
+    <a href = "http://www.csce.uark.edu/~az007/project_cpp/hello.php"> Main Menu </a>
 </form>
 <br><br>
 
@@ -27,7 +27,7 @@ if (isset($_POST['submit']))
     $dept_code = escapeshellarg($_POST[dept_code]);
     $course_number = escapeshellarg($_POST[course_number]);
 
-    	$command = '/home/xsguo/public_html/project_cpp/odbc_insert_enrollment.exe ' . $enroll_ID . ' ' . $id . ' ' . $course_ID. ' ' . $dept_code . ' ' .$course_number;
+    	$command = '/home/az007/public_html/project_cpp/odbc_insert_enrollment.exe ' . $enroll_ID . ' ' . $id . ' ' . $course_ID. ' ' . $dept_code . ' ' .$course_number;
     	echo '<p>' . 'command: ' . $command . '<p>';
 
     	// remove dangerous characters from command to protect web server

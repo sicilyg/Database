@@ -23,19 +23,23 @@ string SchemaName = "xsguo";          // Change to your username
    builder.append("<br><br><br> Student table before:" + myDB.query(query1) +"<br>");
 
    // Parse input string to get restaurant Name and Type and  City
+   string enroll_ID = "ENROLLMENT ID";
    string ID = "4";
+   string course_ID = "COURSE ID";
    string dept_code = "DEPT CODE";
    string course_number = "COURSE NUMBER";
 
    // Read command line arguments
    // First arg, arg[0] is the name of the program
    // Next args are the parameters
-   ID = argv[1];
-   dept_code = argv[2];
-   course_number = argv[3];
+   enroll_ID = argv[1];
+   ID = argv[2];
+   course_ID = argv[3];
+   dept_code = argv[4];
+   course_number = argv[5];
 
    // Insert the new restaurant
-   string input = ID + ",'" + dept_code + "','" + course_number + "'";
+   string input = enroll_ID + ",'" + ID+ "','" + course_ID + "','" +dept_code + "','" + course_number + "'";
    myDB.insert("Enrollment", input);    // insert new restaurant
 
    //For debugging purposes: Show the database after insert
