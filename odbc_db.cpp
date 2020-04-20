@@ -11,7 +11,7 @@ void odbc_db::Connect(string Username, string mysqlPassword, string SchemaName)
       connection = driver->connect("tcp://127.0.0.1:3306", Username, mysqlPassword);
       connection->setSchema(SchemaName);
    }
-  catch (sql::SQLException &e) 
+  catch (sql::SQLException &e)
   {
       cout << "ERROR: SQLException in " << __FILE__;
       cout << " (" << __func__<< ") on line " << __LINE__ << endl;
@@ -22,7 +22,7 @@ void odbc_db::Connect(string Username, string mysqlPassword, string SchemaName)
 }
 
 // Disconnect from the database
-void odbc_db::disConnect()  
+void odbc_db::disConnect()
 {
    delete resultSet;
    delete statement;
@@ -32,17 +32,17 @@ void odbc_db::disConnect()
 
 // Execute an SQL query passed in as a String parameter
 // and print the resulting relation
-string odbc_db::query(string q) 
+string odbc_db::query(string q)
 {
-string builder = ""; 
-   try 
+string builder = "";
+   try
    {
       resultSet = statement->executeQuery(q);
       builder.append("<br>---------------------------------<br>");
       builder.append("Query: <br>" + q + "<br><br>Result: ");
       builder.append(print(resultSet));
    }
-   catch (sql::SQLException e) 
+   catch (sql::SQLException e)
    {
       cout << "ERROR: SQLException in " << __FILE__;
       cout << " (" << __func__<< ") on line " << __LINE__ << endl;
@@ -55,9 +55,9 @@ string builder = "";
 
 // Print the results of a query with attribute names on the first line
 // Followed by the tuples, one per line
-string odbc_db::print (sql::ResultSet *resultSet) 
+string odbc_db::print (sql::ResultSet *resultSet)
 {
-string builder = ""; 
+string builder = "";
    try
    {
       if (resultSet -> rowsCount() != 0)
@@ -70,7 +70,7 @@ string builder = "";
       else
          throw runtime_error("ResultSetMetaData FAILURE - no records in the result set");
    }
-   catch (std::runtime_error &e) 
+   catch (std::runtime_error &e)
    {
    }
    return builder;
@@ -78,13 +78,13 @@ string builder = "";
 
 // Print the attribute names
 string odbc_db::printHeader(sql::ResultSetMetaData *metaData, int numColumns)
-{ 
+{
 string builder = "";
 
-   try 
+   try
    {
       //Printing Column names
-      for (int i = 1; i <= numColumns; i++) 
+      for (int i = 1; i <= numColumns; i++)
       {
          if (i > 1)
             builder.append(",  ");
@@ -99,20 +99,20 @@ string builder = "";
 }
 
 // Print the attribute values for all tuples in the result
-string odbc_db::printRecords(sql::ResultSet *resultSet, int numColumns)   
-{ 
+string odbc_db::printRecords(sql::ResultSet *resultSet, int numColumns)
+{
 string builder = "";
 
    //Printing Records
    try
    {
-      while (resultSet->next()) 
+      while (resultSet->next())
       {
-         for (int i = 1; i <= numColumns; i++) 
+         for (int i = 1; i <= numColumns; i++)
          {
             if (i > 1)
                builder.append(",  ");
-            builder.append(resultSet->getString(i)); 
+            builder.append(resultSet->getString(i));
          }
          builder.append("<br>");
       }
@@ -124,7 +124,7 @@ string builder = "";
 }
 
 // Insert into any table, any values from data passed in as String parameters
-void odbc_db::insert(string table, string values) 
+void odbc_db::insert(string table, string values)
 {
 string query = "INSERT into " + table + " values (" + values + ")";
 
@@ -136,13 +136,13 @@ string query = "INSERT into " + table + " values (" + values + ")";
 // Assumes that connection to database is already made
 void odbc_db::initDatabase()
 {
-   try 
+   try
    {
       // Drop records from existing tables
       statement = connection->createStatement();
       statement->executeUpdate("DELETE from Student");
       statement->executeUpdate("DELETE from Course");
-      //statement->executeUpdate("DELETE from Enrollment");
+      statement->executeUpdate("DELETE from Enrollment");
 
       insert("Student", "1001, 'Devin Casey', 'Computer Science'");
       insert("Student", "1002, 'Kylie McGregor', 'Psychology'");
@@ -153,6 +153,15 @@ void odbc_db::initDatabase()
       insert("Course", "2002, 'CSCE', 2014, 'Programming Foundations II', 4");
       insert("Course", "2003, 'MATH', 2554, 'Calculus I', 4");
       insert("Course", "2004, 'MATH', 2574, 'Calculus II', 4");
+
+      insert("Enrollment", "3001,1001,2003,'MATH',2554");
+      insert("Enrollment", "3002,1001,2002,'CSCE',2014");
+      insert("Enrollment", "3003,1002,2003,'MATH',2554");
+      insert("Enrollment", "3004,1003,2004,'MATH',2574");
+      insert("Enrollment", "3005,1003,2002,'CSCE',2014");
+      insert("Enrollment", "3006,1004,2001,'CSCE',2004");
+      insert("Enrollment", "3007,1004,2003,'MATH',2554");
+
 
       // Add records to the tables
       /*insert("Restaurant", "0, 'Tasty Thai', 'Asian', 'Dallas'");
