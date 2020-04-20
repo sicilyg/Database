@@ -22,11 +22,8 @@ if (isset($_POST['submit']))
     $id = escapeshellarg($_POST[id]);
     $name = escapeshellarg($_POST[name]);
     $major = escapeshellarg($_POST[major]);
-
-    $result = mysql_query("SELECT * FROM Student WHERE StudentID = id");
-    $matchFound = mysql_num_rows($result) > 0 ? 'yes' : 'no';
     
-    if($matchFound == 'no') {
+ 
     	$command = '/home/xsguo/public_html/project_cpp/odbc_insert_restaurant.exe ' . $id . ' ' . $name . ' ' . $major;
     	echo '<p>' . 'command: ' . $command . '<p>';
 
@@ -35,7 +32,7 @@ if (isset($_POST['submit']))
  
     	// run odbc_insert_restaurant.exe
  	system($command);           
-    }
+    
 }
 ?>
 

@@ -7,6 +7,10 @@
 	 <a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_insert_restaurant.php"> Insert Student </a>
 	<br><br>
 	<a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_view_student.php"> View All Students </a>
+	<br><br>
+	<a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_view_course.php"> View Course from Department </a>
+
+
 </form>
 <br><br>
 
