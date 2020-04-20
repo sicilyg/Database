@@ -140,13 +140,22 @@ void odbc_db::initDatabase()
    {
       // Drop records from existing tables
       statement = connection->createStatement();
-      statement->executeUpdate("DELETE from FoodOrder");
-      statement->executeUpdate("DELETE from MenuItem");
-      statement->executeUpdate("DELETE from Dish");
-      statement->executeUpdate("DELETE from Restaurant");
+      statement->executeUpdate("DELETE from Student");
+      statement->executeUpdate("DELETE from Course");
+      //statement->executeUpdate("DELETE from Enrollment");
+
+      insert("Student", "1001, 'Devin Casey', 'Computer Science'");
+      insert("Student", "1002, 'Kylie McGregor', 'Psychology'");
+      insert("Student", "1003, 'Jai Thorpe', 'Chemical Engineering'");
+      insert("Student", "1004, 'Dylon Hermaqn', 'Business'");
+
+      insert("Course", "2001, 'CSCE', 2004, 'Programming Foundations I', 4");
+      insert("Course", "2002, 'CSCE', 2014, 'Programming Foundations II', 4");
+      insert("Course", "2003, 'MATH', 2554, 'Calculus I', 4");
+      insert("Course", "2004, 'MATH', 2574, 'Calculus II', 4");
 
       // Add records to the tables
-      insert("Restaurant", "0, 'Tasty Thai', 'Asian', 'Dallas'");
+      /*insert("Restaurant", "0, 'Tasty Thai', 'Asian', 'Dallas'");
       insert("Restaurant", "3,'Eureka Pizza','Pizza', 'Fayetteville'");
       insert("Restaurant", "5,'Tasty Thai','Asian', 'Las Vegas'");
 
@@ -182,7 +191,7 @@ void odbc_db::initDatabase()
       insert("FoodOrder", "5,7,STR_To_DATE('04,03,2017', '%d,%m,%Y'), '18:51'");
       insert("FoodOrder", "6,9,STR_To_DATE('01,03,2017', '%d,%m,%Y'), '19:00'");
       insert("FoodOrder", "7,11,STR_To_DATE('05,03,2017', '%d,%m,%Y'), '17:15'");
-
+*/
 
    }
    catch (sql::SQLException &e)

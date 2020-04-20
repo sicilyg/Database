@@ -1,10 +1,10 @@
 <html>
 <body>
-<h3>Enter your name:</h3>
+<h3>Main Menu</h3>
 
 <form action="hello.php" method="post">
-    Name: <input type="text" name="name"><br>
-    <input name="submit" type="submit" >
+	<input type = "submit" class = "button" name = "init" value = "initDatabase" /> <br>   
+	 <a href = "http://www.csce.uark.edu/~xsguo/project_cpp/odbc_insert_restaurant.php"> Insert Student </a>
 </form>
 <br><br>
 
@@ -12,21 +12,12 @@
 </html>
 
 <?php
-if (isset($_POST['submit'])) 
-{
-    // replace ' ' with '\ ' in the strings so they are treated as single command line args
-    $name = escapeshellarg($_POST[name]);
+if (isset($_POST['init'])) {
+	$command = '/home/xsguo/public_html/project_cpp/hello.exe';
+	
+	$command = escapeshellcmd($command);
 
-    // build the linux command that you want executed; use full path for safety
-    $command = '/home/MYUSERNAME/public_html/project_cpp/hello.exe ' . $name;
-
-    // remove dangerous characters from command to protect web server
-    $command = escapeshellcmd($command);
- 
-    // echo then run the command
 	echo "command: $command <br>";
-    system($command);           
+	system($command);
 }
 ?>
-
-
